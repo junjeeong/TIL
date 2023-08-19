@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var jsonData = `{
+        "name" : "홍길동",
+        "age" : "30",
+        "gender" : "남",
+        "interests" : "댄스", "노래",
+        "family" : {"father" : 홍길동, "mother : 김연삼"},
+        "school" : null,
+        "graduate" : false}`;
+
+      var jsonData = JSON.parse(jsonData);
+      console.log(jsonData);
+    </script>
+  </body>
+</html>
