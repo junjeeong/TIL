@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function InFo(name, age) {
+        this.name = name;
+        this.age = age;
+      }
+
+      InFo.prototype.write = function () {
+        console.log("이름은" + this.name + "나이는" + this.age + "살입니다.");
+      };
+
+      var info1 = new InFo("정준영", 27);
+      var info2 = new InFo("홍길동", 23);
+      var info3 = new InFo("홍길섭", 33);
+
+      info1.write();
+      info2.write();
+      info3.write();
+
+      console.log(info1);
+      console.log(info2);
+      console.log(info3);
+    </script>
+  </body>
+</html>
