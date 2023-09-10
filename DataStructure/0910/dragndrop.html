@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      /* 드래그 가능한 요소의 스타일 */
+      .draggable {
+        width: 100px;
+        height: 100px;
+        background-color: #3498db;
+        color: #fff;
+        text-align: center;
+        line-height: 100px;
+        cursor: pointer;
+        user-drag: element;
+      }
+
+      /* 드롭 영역의 스타일 */
+      .dropzone {
+        width: 200px;
+        height: 200px;
+        border: 2px dashed #ccc;
+        margin-top: 20px;
+      }
+    </style>
+    <title>드래그 앤 드롭 예시</title>
+  </head>
+  <body>
+    <!-- 드래그 가능한 요소 -->
+    <div class="draggable" draggable="true" id="dragElement">드래그하세요</div>
+
+    <!-- 드롭 영역 -->
+    <div class="dropzone" id="dropArea">여기에 놓기</div>
+
+    <script>
+      const dragElement = document.getElementById("dragElement");
+      const dropArea = document.getElementById("dropArea");
+      let originalLocation = null;
+
+      // 드래그 시작 이벤트 핸들러
+      dragElement.addEventListener("dragstart", (event) => {
+        event.dataTransfer.setData("text/plain", event.target.id);
+        // 원래 위치를 기억
+        originalLocation = event.target.parentNode;
+      });
+
+      // 드롭 영역에 드래그된 요소를 놓을 때 이벤트 핸들러
+      dropArea.addEventListener("dragover", (event) => {
+        event.preventDefault(); // 브라우저 기본 동작 방지
+      });
+
+      dropArea.addEventListener("drop", (event) => {
+        event.preventDefault();
+        const data = event.dataTransfer.getData("text/plain");
+        const draggedElement = document.getElementById(data);
+
+        // 드롭 영역에 드래그 가능한 요소를 추가
+        dropArea.appendChild(draggedElement);
+
+        // 원래 위치로 다시 드롭
+        if (originalLocation) {
+          originalLocation.appendChild(draggedElement);
+        }
+      });
+
+      // 드래그 가능한 요소를 다시 드래그할 때 이벤트 핸들러
+      dragElement.addEventListener("dragend", (event) => {
+        // 다시 드래그 가능하도록 설정
+        event.target.setAttribute("draggable", "true");
+      });
+    </script>
+  </body>
+</html>
