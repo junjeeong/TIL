@@ -1,14 +1,7 @@
+/* 달팽이 만들기 */
+
 /* user code */
-function Node(data) {
-  this.data = data;
-  this.next = null;
-}
-
-function LinkedList() {
-  this.head = null;
-}
-
-function answer(n, m, k) {
+function answer(length) {
   let result = [];
 
   // 코드 구현 시작 영역
@@ -23,16 +16,16 @@ function answer(n, m, k) {
 /* main code */
 let input = [
   // TC: 1
-  [8, 2, 3],
+  3,
 
   // TC: 2
-  [10, 2, 3],
+  5,
 
   // TC: 3
-  [20, 5, 7],
+  6,
 ];
 
 for (let i = 0; i < input.length; i++) {
   process.stdout.write(`#${i + 1} `);
-  console.log(answer(input[i][0], input[i][1], input[i][2]));
+  console.log(answer(input[i]));
 }

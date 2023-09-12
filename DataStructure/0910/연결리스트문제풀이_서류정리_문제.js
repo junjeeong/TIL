@@ -8,26 +8,26 @@ function LinkedList() {
   this.head = null;
 }
 
-function answer(ll) {
-  // 코드 구현 시작 영역
+function answer(ll) {   
+  let current = ll.head,
+      prev = null,
+      next;
 
-  // …
-
-  // 코드 구현 종료 영역
+  while(current != null){
+    next = current.next;
+    current.next = prev;
+    prev = current;
+    current = next;
+  }
+  
+  ll.head = prev;
 
   return ll;
 }
 
 /* main code */
 let input = [
-  // TC: 1
-  [7, 3, 1],
-
-  // TC: 2
-  [4, 6, 9, 1, 3],
-
-  // TC: 3
-  [3, 4, 1, 2, 7, 9, 6],
+  [4, 6, 9, 1, 3]
 ];
 
 LinkedList.prototype.printNode = function () {
