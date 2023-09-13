@@ -5,10 +5,10 @@ export const getCartInfo = () => JSON.parse(localStorage.getItem(CART_COOKIE_KEY
 
 const cartInfo = getCartInfo();
 
-const isInCart = ({ id })=>{
+const isInCart = ({ id }) => {
     const originalCartInfo = getCartInfo(); 
     return !!originalCartInfo.find((cartInfo) => cartInfo.id === id); 
-    
+
 };
 
 const addCartInfo = (productInfo)=> {
@@ -39,13 +39,13 @@ export const getCartToggleButton = (productInfo, removeCartCallback) => {
                 if (!confirm(`${productInfo.name}을 장바구니에서 삭제할까요??`)) return; 
                 
                 removeCartInfo(productInfo);
-                cartImage.src = 'public/assets/cart.png';
+                cartImage.src = "./public/assets/cart.png";
                 removeCartCallback?.();
             }   else {
                 addCartInfo(productInfo);
-                cartImage.src = 'public/assets/cartDisabled.png';
+                cartImage.src = "./public/asssets/cartDisabled.png";
                 if (confirm("장바구니에 담았습니다. 장바구니 페이지로 이동할까요??")){
-                    location.href = "../cart.html";
+                    location.href = "./cart.html";
                 }
             }
             inCart = !inCart;
@@ -53,7 +53,7 @@ export const getCartToggleButton = (productInfo, removeCartCallback) => {
     });
     const cartImage = makeDomWithProperties('img', {
         className : 'cart-image',
-        src : inCart ? 'public/assets/cartDisabled.png' : 'public/assets/cart.png',
+        src : inCart ? './public/assets/cartDisabled.png' : './public/assets/cart.png',
     });
 
     cartToggleBtn.appendChild(cartImage);   

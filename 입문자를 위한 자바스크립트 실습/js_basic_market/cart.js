@@ -4,16 +4,6 @@ import { getProductList } from "./module/productList.js";
 import { makeDomWithProperties } from "./utils/dom.js";
 import { setPayInfo } from "./module/paymodule.js";
 
-
-// 부모 -> section  tag
-// 형제요소 -> cart-pay-container
-//장바구니에 있는 물품 -> product-list-con
-
-
-//1.장바구니에 있는 물품 정보 가져오기
-//2.(1)번에서 가져온 물품 정보를 productList와 연결 
-//3.section 자식 요소중 cart-pay-container 앞에 삽입하기
-
 const sectionDOM = document.getElementsByTagName('section')[0];
 const cartPayContainerDOM = document.getElementById('cart-pay-container');  
 
