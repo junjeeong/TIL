@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>React Example</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+</body>
+
+<script type="text/babel">
+    function App() {
+        const [amount, setAmount] = React.useState();
+        const [fliped, setFliped] = React.useState(false);
+
+        const onChange = (e) => {
+            setAmount(e.target.value)
+        }
+
+        const reset = () => setAmount(0)
+        const onFlip = () => {
+            reset()
+            setFliped((current) => !current);
+        }
+
+        return (
+            <div>
+                <h1>Super Converter</h1>
+                <div>
+                <label htmlFor="minutes">Minutes</label>
+                <input
+                    value={fliped ? amount * 60 : amount} 
+                    id="minutes" 
+                    type="number"
+                    onChange={onChange}
+                    disabled={fliped}
+                />
+                </div>
+                <div>
+                <label htmlFor="hours">Hours</label>
+                <input 
+                    value={fliped ? amount : (amount / 60).toFixed(1)} 
+                    id="hours" 
+                    type="number"
+                    onChange={onChange}
+                    disabled={!fliped}
+                />
+                </div>
+                <button onClick={reset}>Reset</button>
+                <button onClick={onFlip}>Flip</button>
+
+            </div>
+        )
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'))
+    root.render(<App />)
+</script>
+
+</html>
